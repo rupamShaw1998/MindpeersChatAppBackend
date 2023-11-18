@@ -1,39 +1,3 @@
-// const express = require('express');
-// const http = require('http');
-// const socketIO = require('socket.io');
-// const mongoose = require('mongoose');
-// const cors = require('cors');
-
-// const app = express();
-// const server = http.createServer(app);
-// const io = socketIO(server);
-
-// app.use(cors());
-// app.use(express.json());
-
-// require('./config/db');
-
-// // Define MongoDB Schema (e.g., User, Message)
-
-// // Socket.IO Connection
-// io.on('connection', (socket) => {
-//   console.log('User connected');
-
-//   // Handle incoming messages
-
-//   // Handle disconnect
-//   socket.on('disconnect', () => {
-//     console.log('User disconnected');
-//   });
-// });
-
-// const PORT = process.env.PORT || 5000;
-
-// server.listen(PORT, () => {
-//   console.log(`Server is running on port ${PORT}`);
-// });
-
-
 const express = require('express');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -104,7 +68,7 @@ io.on('connection', socket => {
 // Routes
 app.get('/', (req, res) => {
     res.send('Welcome');
-})
+});
 
 app.post('/api/register', async (req, res, next) => {
     try {
@@ -130,7 +94,7 @@ app.post('/api/register', async (req, res, next) => {
     } catch (error) {
         console.log(error, 'Error')
     }
-})
+});
 
 app.post('/api/login', async (req, res, next) => {
     try {
@@ -167,7 +131,7 @@ app.post('/api/login', async (req, res, next) => {
     } catch (error) {
         console.log(error, 'Error')
     }
-})
+});
 
 app.post('/api/conversation', async (req, res) => {
     try {
@@ -178,7 +142,7 @@ app.post('/api/conversation', async (req, res) => {
     } catch (error) {
         console.log(error, 'Error')
     }
-})
+});
 
 app.get('/api/conversations/:userId', async (req, res) => {
     try {
@@ -193,7 +157,7 @@ app.get('/api/conversations/:userId', async (req, res) => {
     } catch (error) {
         console.log(error, 'Error')
     }
-})
+});
 
 app.post('/api/message', async (req, res) => {
     try {
@@ -214,7 +178,7 @@ app.post('/api/message', async (req, res) => {
     } catch (error) {
         console.log(error, 'Error')
     }
-})
+});
 
 app.get('/api/message/:conversationId', async (req, res) => {
     try {
@@ -241,7 +205,7 @@ app.get('/api/message/:conversationId', async (req, res) => {
     } catch (error) {
         console.log('Error', error)
     }
-})
+});
 
 app.get('/api/users/:userId', async (req, res) => {
     try {
@@ -254,8 +218,8 @@ app.get('/api/users/:userId', async (req, res) => {
     } catch (error) {
         console.log('Error', error)
     }
-})
+});
 
 app.listen(port, () => {
   console.log('listening on port ' + port);
-})
+});
